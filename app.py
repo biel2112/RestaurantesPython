@@ -1,16 +1,16 @@
 import os
 
-restaurantes = []
+from Restaurante import Restaurante
 
 def ativar_restaurante():
     exibir_subtitulo("Alterar estado de ativo do restaurante")
     nome = input("Digite o nome de um restaurante:\n")
     restaurante_encontrado = False
-    for restaurante in restaurantes:
-        if nome == restaurante['nome']:
+    for restaurante in Restaurante.restaurantes:
+        if nome == restaurante.nome:
             restaurante_encontrado = True
-            restaurante['ativo'] = not restaurante['ativo']
-            msg = f'O restaurante {nome} foi ativado!' if restaurante['ativo'] else f'O restaurante {nome} foi desativado!'
+            restaurante._ativo = not restaurante._ativo
+            msg = f'O restaurante {nome} foi ativado!' if restaurante._ativo else f'O restaurante {nome} foi desativado!'
             print(msg)
     if not restaurante_encontrado:
         print("Restaurante não encontrado!\n")
@@ -51,20 +51,16 @@ def cadastrar_novo_restaurante():
     exibir_subtitulo("Cadastro de novos restaurantes")
     restaurante_nome = input("Digite o nome do restaurante:\n")
     restaurante_categoria = input("Digite a categoria desse restaurantes:\n")
-    dados_restaurante = {'nome': restaurante_nome, 'categoria': restaurante_categoria, 'ativo': False}
-    restaurantes.append(dados_restaurante)
-    print(f'\nRestaurante {restaurante_nome} adicionado com sucesso à lista!\n')
+    restaurante = Restaurante(restaurante_nome, restaurante_categoria)
+    # dados_restaurante = {'nome': restaurante.nome, 'categoria': restaurante.categoria, 'ativo': restaurante.ativo}
+    print(f'\nRestaurante {restaurante.nome} adicionado com sucesso à lista!\n')
     voltar_menu()
 
 
 def listar_restaurantes():
     exibir_subtitulo("Lista de restaurantes cadastrados")
-
-    for restaurante in restaurantes:
-        nome_restaurante = restaurante['nome']
-        categoria = restaurante['categoria']
-        ativo = 'Ativo' if restaurante['ativo'] else 'Desativado'
-        print(f'-{nome_restaurante.ljust(20)} | {categoria.ljust(20)} | {ativo}')
+    for restaurante in Restaurante.restaurantes:
+        print(restaurante)
     voltar_menu()
 
 
