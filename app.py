@@ -5,14 +5,12 @@ from Restaurante import Restaurante
 def ativar_restaurante():
     exibir_subtitulo("Alterar estado de ativo do restaurante")
     nome = input("Digite o nome de um restaurante:\n")
-    restaurante_encontrado = False
-    for restaurante in Restaurante.restaurantes:
-        if nome == restaurante.nome:
-            restaurante_encontrado = True
-            restaurante._ativo = not restaurante._ativo
-            msg = f'O restaurante {nome} foi ativado!' if restaurante._ativo else f'O restaurante {nome} foi desativado!'
-            print(msg)
-    if not restaurante_encontrado:
+    try:
+        restaurante = next(r for r in Restaurante.restaurantes if r.nome == nome)
+        restaurante._ativo = not restaurante._ativo
+        msg = f'O restaurante {nome} foi ativado!' if restaurante._ativo else f'O restaurante {nome} foi desativado!'
+        print(msg)
+    except StopIteration:
         print("Restaurante não encontrado!\n")
     voltar_menu()
 
@@ -52,13 +50,13 @@ def cadastrar_novo_restaurante():
     restaurante_nome = input("Digite o nome do restaurante:\n")
     restaurante_categoria = input("Digite a categoria desse restaurantes:\n")
     restaurante = Restaurante(restaurante_nome, restaurante_categoria)
-    # dados_restaurante = {'nome': restaurante.nome, 'categoria': restaurante.categoria, 'ativo': restaurante.ativo}
     print(f'\nRestaurante {restaurante.nome} adicionado com sucesso à lista!\n')
     voltar_menu()
 
 
 def listar_restaurantes():
     exibir_subtitulo("Lista de restaurantes cadastrados")
+    print(f'{"Nome do Restaurante".ljust(25)} | {"Categoria".ljust(25)} | {"Status"}')
     for restaurante in Restaurante.restaurantes:
         print(restaurante)
     voltar_menu()
