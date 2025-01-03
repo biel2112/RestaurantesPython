@@ -1,8 +1,15 @@
 import os
 
+"""Importa a classe restaurante para a variável rest"""
 from modelos.restaurante import Restaurante as rest
 
+
 def exibir_subtitulo(texto):
+    """Forma um título contornado de asteriscos com o texto recebido
+
+        Parâmetros:
+        - texto (str): Texto a ser transformado em subtítulo
+    """
     os.system('clear')
     linha = '*' * (len(texto) + 4)
     print(linha)
@@ -11,6 +18,7 @@ def exibir_subtitulo(texto):
     print()
 
 def exibir_nome_programa():
+    """Exibe o nome do programa"""
     print("""
     ░██████╗░█████╗░██████╗░░█████╗░██████╗░  ███████╗██╗░░██╗██████╗░██████╗░███████╗░██████╗░██████╗
     ██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗  ██╔════╝╚██╗██╔╝██╔══██╗██╔══██╗██╔════╝██╔════╝██╔════╝
@@ -20,6 +28,7 @@ def exibir_nome_programa():
     ╚═════╝░╚═╝░░╚═╝╚═════╝░░╚════╝░╚═╝░░╚═╝  ╚══════╝╚═╝░░╚═╝╚═╝░░░░░╚═╝░░╚═╝╚══════╝╚═════╝░╚═════╝\n\n""")
 
 def exibir_opcs():
+    """Exibe uma lista de opções de ação do menu principal"""
     print('1. Cadastrar restaurante')
     print('2. Listar restaurante')
     print('3. Ativar restaurante')
@@ -27,19 +36,23 @@ def exibir_opcs():
     print('5. Sair')
 
 def voltar_menu():
+    "Retorna para o Menu Principal após pressionar a tecla Enter"
     input("\nPressione Enter para voltar ao menu principal!\n")
     main()
 
 def finalizar_app():
+    """Encerra o aplicativo"""
     os.system('clear')
     print('Finalizando app...')
 
 
 def opc_invalida():
+    """Mensagem mostrada ao pressionar uma opção inexistente do menu principal"""
     print("Digite uma opção válida!\n")
     voltar_menu()
 
 def escolher_opc():
+    """Retorna as ações escolhidas pelo usuário no menu principal"""
     try:
         opc = int(input("O que você deseja fazer?\n"))
 
@@ -60,7 +73,7 @@ def escolher_opc():
             nome_restaurante = input("Digite o nome do restaurante a ser ativado/desativado:\n")
             try:
                 restaurante = next(r for r in rest.restaurantes if r.nome.lower() == nome_restaurante.lower())
-                restaurante.ativar_restaurante()  # Chama o método de instância
+                restaurante.ativar_restaurante()
 
             except StopIteration:
                 print(f"Restaurante '{nome_restaurante}' não encontrado!\n")
@@ -74,7 +87,7 @@ def escolher_opc():
                 restaurante = next(r for r in rest.restaurantes if r.nome.lower() == nome_restaurante.lower())
                 nome_cliente = input("Digite seu nome:\n")
                 nota = float(input("Digite a nota (0.0 a 10.0):\n"))
-                restaurante.avaliar(nome_cliente, nota)  # Chama o método de instância
+                restaurante.avaliar(nome_cliente, nota)
             except StopIteration:
                 print(f"Restaurante '{nome_restaurante}' não encontrado!\n")
             except ValueError:
@@ -90,6 +103,7 @@ def escolher_opc():
         opc_invalida()
 
 def main():
+    """Roda o programa"""
     os.system('clear')
     exibir_nome_programa()
     exibir_opcs()
