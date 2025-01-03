@@ -27,16 +27,10 @@ class Restaurante:
         restaurante = Restaurante(restaurante_nome, restaurante_categoria)
         print(f'\nRestaurante {restaurante._nome} adicionado com sucesso à lista!\n')
 
-    @classmethod
-    def ativar_restaurante(cls):
-        nome = input("Digite o nome do restaurante que deseja ativar:\n")
-        try:
-            restaurante = next(r for r in Restaurante.restaurantes if r.nome.lower() == nome.lower())
-            restaurante._ativo = not restaurante._ativo
-            msg = f'O restaurante {nome} foi ativado!' if restaurante._ativo else f'O restaurante {nome} foi desativado!'
-            print(msg)
-        except StopIteration:
-            print(f"Restaurante '{nome}' não encontrado!\n")
+    def ativar_restaurante(self):  # Método de instância
+        self._ativo = not self._ativo
+        msg = f'O restaurante {self.nome} foi ativado!' if self._ativo else f'O restaurante {self.nome} foi desativado!'
+        print(msg)
 
     def avaliar(self, nome_cliente, nota):  # Método de instância
         avaliacao = Avaliacao(nome_cliente, nota)
