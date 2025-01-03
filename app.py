@@ -44,19 +44,6 @@ def voltar_menu():
     input("\nPressione Enter para voltar ao menu principal!\n")
     main()
 
-
-def cadastrar_novo_restaurante():
-    exibir_subtitulo("Cadastro de novos restaurantes")
-    restaurante_nome = input("Digite o nome do restaurante:\n")
-    restaurante_categoria = input("Digite a categoria desse restaurantes:\n")
-    restaurante = Restaurante(restaurante_nome, restaurante_categoria)
-    print(f'\nRestaurante {restaurante.nome} adicionado com sucesso à lista!\n')
-    voltar_menu()
-
-
-
-
-
 def finalizar_app():
     os.system('clear')
     print('Finalizando app...')
@@ -72,7 +59,10 @@ def escolher_opc():
         opc = int(input("O que você deseja fazer?\n"))
 
         if opc == 1:
-            cadastrar_novo_restaurante()
+            exibir_subtitulo("Cadastro de novos restaurantes")
+            Restaurante.cadastrar_novo_restaurante()
+            voltar_menu()
+
         elif opc == 2:
             exibir_subtitulo("Lista de restaurantes cadastrados")
             Restaurante.listar_restaurantes()

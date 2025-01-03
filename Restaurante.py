@@ -3,13 +3,13 @@ class Restaurante:
     restaurantes = []
 
     def __init__(self, nome, categoria):
-        self.nome = nome.title()
-        self.categoria = categoria.upper()
+        self._nome = nome.title()
+        self._categoria = categoria.upper()
         self._ativo = False
         Restaurante.restaurantes.append(self)
 
     def __str__(self):
-        return f'{self.nome.ljust(25)} | {self.categoria.ljust(25)} | {self.ativo}'
+        return f'{self._nome.ljust(25)} | {self._categoria.ljust(25)} | {self.ativo}'
 
     @classmethod
     def listar_restaurantes(cls):
@@ -17,6 +17,18 @@ class Restaurante:
         for restaurante in Restaurante.restaurantes:
             print(restaurante)
 
+    @classmethod
+    def cadastrar_novo_restaurante(cls):
+        restaurante_nome = input("Digite o nome do restaurante:\n")
+        restaurante_categoria = input("Digite a categoria desse restaurantes:\n")
+        restaurante = Restaurante(restaurante_nome, restaurante_categoria)
+        print(f'\nRestaurante {restaurante._nome} adicionado com sucesso à lista!\n')
+
     @property
     def ativo(self):
         return '⌧' if self._ativo else '☐'
+
+    @property
+    def nome(self):
+        return self._nome
+
