@@ -2,17 +2,6 @@ import os
 
 from Restaurante import Restaurante
 
-def ativar_restaurante():
-    exibir_subtitulo("Alterar estado de ativo do restaurante")
-    nome = input("Digite o nome de um restaurante:\n")
-    try:
-        restaurante = next(r for r in Restaurante.restaurantes if r.nome == nome)
-        restaurante._ativo = not restaurante._ativo
-        msg = f'O restaurante {nome} foi ativado!' if restaurante._ativo else f'O restaurante {nome} foi desativado!'
-        print(msg)
-    except StopIteration:
-        print("Restaurante não encontrado!\n")
-    voltar_menu()
 
 def exibir_subtitulo(texto):
     os.system('clear')
@@ -69,7 +58,10 @@ def escolher_opc():
             voltar_menu()
 
         elif opc == 3:
-            ativar_restaurante()
+            exibir_subtitulo("Alterar estado de ativo do restaurante")
+            Restaurante.ativar_restaurante()
+            voltar_menu()
+
         elif opc == 4:
             finalizar_app()
         else:

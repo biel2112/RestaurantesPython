@@ -24,6 +24,17 @@ class Restaurante:
         restaurante = Restaurante(restaurante_nome, restaurante_categoria)
         print(f'\nRestaurante {restaurante._nome} adicionado com sucesso à lista!\n')
 
+    @classmethod
+    def ativar_restaurante(cls):
+        nome = input("Digite o nome de um restaurante:\n").lower()
+        try:
+            restaurante = next(r for r in Restaurante.restaurantes if r.nome.lower() == nome)
+            restaurante._ativo = not restaurante._ativo
+            msg = f'O restaurante {nome} foi ativado!' if restaurante._ativo else f'O restaurante {nome} foi desativado!'
+            print(msg)
+        except StopIteration:
+            print("Restaurante não encontrado!\n")
+
     @property
     def ativo(self):
         return '⌧' if self._ativo else '☐'
