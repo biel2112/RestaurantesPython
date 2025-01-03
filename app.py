@@ -54,12 +54,7 @@ def cadastrar_novo_restaurante():
     voltar_menu()
 
 
-def listar_restaurantes():
-    exibir_subtitulo("Lista de restaurantes cadastrados")
-    print(f'{"Nome do Restaurante".ljust(25)} | {"Categoria".ljust(25)} | {"Status"}')
-    for restaurante in Restaurante.restaurantes:
-        print(restaurante)
-    voltar_menu()
+
 
 
 def finalizar_app():
@@ -79,7 +74,10 @@ def escolher_opc():
         if opc == 1:
             cadastrar_novo_restaurante()
         elif opc == 2:
-            listar_restaurantes()
+            exibir_subtitulo("Lista de restaurantes cadastrados")
+            Restaurante.listar_restaurantes()
+            voltar_menu()
+
         elif opc == 3:
             ativar_restaurante()
         elif opc == 4:
