@@ -38,18 +38,10 @@ class Restaurante:
         except StopIteration:
             print(f"Restaurante '{nome}' não encontrado!\n")
 
-    @classmethod
-    def avaliar(cls):
-        nome_restaurante = input("Digite o nome dor estaurante que deseja avaliar\n").lower()
-        try:
-            restaurante = next(r for r in Restaurante.restaurantes if r.nome.lower() == nome_restaurante)
-            nome_cliente = input("Digite o seu nome:\n")
-            nota = float(input("Digite uma nota para este restaurante:\n"))
-            avaliacao = Avaliacao(nome_cliente, nota)
-            restaurante._avaliacao.append(avaliacao)
-            print("Avaliação realizada com sucesso!")
-        except StopIteration:
-            print("Restaurante não encontrado!\n")
+    def avaliar(self, nome_cliente, nota):  # Método de instância
+        avaliacao = Avaliacao(nome_cliente, nota)
+        self._avaliacao.append(avaliacao)
+        print("Avaliação realizada com sucesso!")
 
 
 

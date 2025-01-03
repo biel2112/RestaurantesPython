@@ -60,7 +60,16 @@ def escolher_opc():
 
         elif opc == 4:
             exibir_subtitulo("Área de avaliação de restaurantes")
-            r.avaliar()
+            nome_restaurante = input("Digite o nome do restaurante a ser avaliado:\n")
+            try:
+                restaurante = next(r for r in r.restaurantes if r.nome.lower() == nome_restaurante.lower())
+                nome_cliente = input("Digite seu nome:\n")
+                nota = float(input("Digite a nota (0.0 a 10.0):\n"))
+                restaurante.avaliar(nome_cliente, nota)  # Chama o método de instância
+            except StopIteration:
+                print(f"Restaurante '{nome_restaurante}' não encontrado!\n")
+            except ValueError:
+                print("Nota inválida. Digite um número entre 0.0 e 10.0")
             voltar_menu()
 
         elif opc == 5:
