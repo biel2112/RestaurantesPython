@@ -127,6 +127,7 @@ class Restaurante:
                     """))
             if opc == 1:
                 if self._pratos:
+                    print(f'{"Prato".ljust(25)} | {"Preço".ljust(25)} | {"Descrição"}')
                     for prato in self._pratos:
                         print(prato)
                 else:
@@ -134,6 +135,7 @@ class Restaurante:
 
             elif opc == 2:
                 if self._bebidas:
+                    print(f'{"Bebida".ljust(25)} | {"Preço".ljust(25)} | {"Tamanho"}')
                     for bebida in self._bebidas:
                         print(bebida)
                 else:
