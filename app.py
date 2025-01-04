@@ -96,9 +96,20 @@ def escolher_opc():
             voltar_menu()
 
         elif opc == 5:
-            finalizar_app()
+            exibir_subtitulo("Adicionar item ao cardápio dor restaurante")
+            nome_restaurante = input("Digite o nome que deseja adicionar um item no cardápio:\n")
+            try:
+                restaurante = next(r for r in rest.restaurantes if r.nome.lower() == nome_restaurante.lower())
+                restaurante.adicionar_item_cardapio()
+
+            except StopIteration:
+                print(f"Restaurante '{nome_restaurante}' não encontrado!\n")
+
+            voltar_menu()
+
         elif opc == 6:
             finalizar_app()
+
         else:
             opc_invalida()
 

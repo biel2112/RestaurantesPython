@@ -84,53 +84,61 @@ class Restaurante:
         return self._nome
 
     def adicionar_item_cardapio(self):
-        opc = input("""
-                Digite o número do que deseja adicionar no cardápio deste restaurante:
-                1 - Prato
-                2 - Bebida
-                3 - Sair
-                """)
-        if opc == 1:
+        opc = 0
+        while opc != 3:
+            opc = int(input("""
+                    Digite o número do que deseja adicionar no cardápio deste restaurante:
+                    1 - Prato
+                    2 - Bebida
+                    3 - Sair
+                    """))
+            if opc == 1:
 
-            nome_prato = input("Digite o nome do prato que deseja cadastrar:\n")
-            preco_prato = float(input("Digite o preço desse prato\n"))
-            descricao_prato = input("Digite uma descrição sobre esse prato\n")
+                nome_prato = input("Digite o nome do prato que deseja cadastrar:\n")
+                preco_prato = float(input("Digite o preço desse prato\n"))
+                descricao_prato = input("Digite uma descrição sobre esse prato\n")
 
-            prato = Prato(nome_prato, preco_prato, descricao_prato)
-            self._pratos.append(prato)
+                prato = Prato(nome_prato, preco_prato, descricao_prato)
+                self._pratos.append(prato)
+                print("Prato cadastrado com sucesso!\n")
 
-        if opc == 2:
-            nome_bebida = input("Digite o nome da bebida que deseja cadastrar:\n")
-            preco_bebida = float(input("Digite o preço dessa bebida\n"))
-            tamanhos_bebida = input("Digite os tamanhos disponíveis para essa bebida\n")
+            elif opc == 2:
+                nome_bebida = input("Digite o nome da bebida que deseja cadastrar:\n")
+                preco_bebida = float(input("Digite o preço dessa bebida\n"))
+                tamanhos_bebida = input("Digite os tamanhos disponíveis para essa bebida\n")
 
-            bebida = Bebida(nome_bebida, preco_bebida, tamanhos_bebida)
-            self._bebidas.append(bebida)
+                bebida = Bebida(nome_bebida, preco_bebida, tamanhos_bebida)
+                self._bebidas.append(bebida)
+                print("Bebida cadastrada com sucesso!\n")
+
+            elif opc < 1 or opc > 3:
+                print("Digite uma opção válida!")
+
 
     def listar_itens_cardapio(self):
-        opc = input("""
-        Digite o número do que deseja ver do cardápio deste restaurante:
-        1 - Pratos
-        2 - Bebidas
-        3 - Pagar
-        4 - Sair
-        """)
-        if opc == 1:
-            if self._pratos:
-                for prato in self._pratos:
-                    print(prato)
-            else:
-                print("Sem pratos cadastrados para este restaurante!")
+        opc = 0
+        while opc != 4:
+            opc = int(input("""
+                    Digite o número do que deseja ver do cardápio deste restaurante:
+                    1 - Pratos
+                    2 - Bebidas
+                    3 - Pagar
+                    4 - Sair
+                    """))
+            if opc == 1:
+                if self._pratos:
+                    for prato in self._pratos:
+                        print(prato)
+                else:
+                    print("Sem pratos cadastrados para este restaurante!")
 
-        elif opc == 2:
-            if self._bebidas:
-                for bebida in self._bebidas:
-                    print(bebida)
-            else:
-                print("Sem bebidas cadastradas para este restaurante!")
+            elif opc == 2:
+                if self._bebidas:
+                    for bebida in self._bebidas:
+                        print(bebida)
+                else:
+                    print("Sem bebidas cadastradas para este restaurante!")
 
-
-
-
-
+            elif opc < 1 or opc > 4:
+                print("Digite uma opção válida!")
 
