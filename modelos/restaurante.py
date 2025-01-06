@@ -100,9 +100,6 @@ class Restaurante:
 
                 prato = Prato(nome_prato, preco_prato, descricao_prato)
                 self._pratos.append(prato)
-                print(self._pratos)
-                for prato in self._pratos:
-                    print(prato)
                 print("Prato cadastrado com sucesso!\n")
 
             elif opc == 2:
@@ -112,8 +109,6 @@ class Restaurante:
 
                 bebida = Bebida(nome_bebida, preco_bebida, tamanhos_bebida)
                 self._bebidas.append(bebida)
-                for bebida in self._bebidas:
-                    print(bebida)
                 print("Bebida cadastrada com sucesso!\n")
 
             elif opc < 1 or opc > 3:
@@ -126,8 +121,7 @@ class Restaurante:
                     Digite o número do que deseja ver do cardápio deste restaurante:
                     1 - Pratos
                     2 - Bebidas
-                    3 - Pagar
-                    4 - Sair
+                    3 - Sair
                     """))
             if opc == 1:
                 if self._pratos:
