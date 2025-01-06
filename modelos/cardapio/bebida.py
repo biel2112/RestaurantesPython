@@ -12,4 +12,7 @@ class Bebida(ItemCardapio):
         """
 
         super().__init__(nome, preco)
-        self.tamanho = tamanho
+        self._tamanho = tamanho
+
+    def __str__(self):
+        return f'{self._nome.ljust(25)} | {str(self._preco).ljust(25)} | {self._tamanho}'
