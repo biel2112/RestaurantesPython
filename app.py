@@ -3,7 +3,6 @@ import os
 """Importa a classe restaurante para a variável rest"""
 from modelos.restaurante import Restaurante as rest
 
-
 def exibir_nome_programa():
     """Exibe o nome do programa"""
     print("""
@@ -48,6 +47,8 @@ def buscar_restaurante(restaurante):
         print(f"Restaurante '{restaurante}' não encontrado!\n")
         return None
 
+
+
 def voltar_menu():
     "Retorna para o Menu Principal após pressionar a tecla Enter"
     input("\nPressione Enter para voltar ao menu principal!\n")
@@ -84,49 +85,46 @@ def escolher_opc():
         elif opc == 3:
             exibir_subtitulo("Alterar estado de ativo do restaurante")
             nome_restaurante = input("Digite o nome do restaurante a ser ativado/desativado:\n")
-            try:
-                restaurante = buscar_restaurante(nome_restaurante)
-                restaurante.ativar_restaurante()
+            restaurante = buscar_restaurante(nome_restaurante)
 
-            except StopIteration:
-                print(f"Restaurante '{nome_restaurante}' não encontrado!\n")
+            if restaurante:
+                restaurante.ativar_restaurante()
 
             voltar_menu()
 
         elif opc == 4:
             exibir_subtitulo("Área de avaliação de restaurantes")
             nome_restaurante = input("Digite o nome do restaurante a ser avaliado:\n")
-            try:
-                restaurante = buscar_restaurante((nome_restaurante))
+            restaurante = buscar_restaurante((nome_restaurante))
+
+            if restaurante:
                 nome_cliente = input("Digite seu nome:\n")
-                nota = float(input("Digite a nota (0.0 a 10.0):\n"))
-                restaurante.avaliar(nome_cliente, nota)
-            except StopIteration:
-                print(f"Restaurante '{nome_restaurante}' não encontrado!\n")
-            except ValueError:
-                print("Nota inválida. Digite um número entre 0.0 e 10.0")
+                try:
+                    nota = float(input("Digite a nota (0.0 a 10.0):\n"))
+                    restaurante.avaliar(nome_cliente, nota)
+
+                except ValueError:
+                    print("Nota inválida. Digite um número entre 0.0 e 10.0")
             voltar_menu()
 
         elif opc == 5:
             exibir_subtitulo("Adicionar item ao cardápio dor restaurante")
             nome_restaurante = input("Digite o nome do restaurante que deseja adicionar um item no cardápio:\n")
-            try:
-                restaurante = buscar_restaurante(nome_restaurante)
-                restaurante.adicionar_item_cardapio()
+            restaurante = buscar_restaurante(nome_restaurante)
 
-            except StopIteration:
-                print(f"Restaurante '{nome_restaurante}' não encontrado!\n")
+            if restaurante:
+                restaurante.adicionar_item_cardapio()
 
             voltar_menu()
 
         elif opc == 6:
             exibir_subtitulo("Ver cardápio do restaurante")
             nome_restaurante = input("Digite o nome do restaurante que deseja fazer seu pedido:\n")
-            try:
-                restaurante = buscar_restaurante((nome_restaurante))
+            restaurante = buscar_restaurante((nome_restaurante))
+
+            if restaurante:
                 restaurante.listar_itens_cardapio()
-            except StopIteration:
-                print(f"Restaurante '{nome_restaurante}' não encontrado!\n")
+
             voltar_menu()
 
         elif opc == 7:

@@ -121,7 +121,8 @@ class Restaurante:
                     Digite o número do que deseja ver do cardápio deste restaurante:
                     1 - Pratos
                     2 - Bebidas
-                    3 - Sair
+                    3 - Fazer Pedido
+                    4 - Sair
                     """))
             if opc == 1:
                 if self._pratos:
@@ -140,12 +141,45 @@ class Restaurante:
                     print("Sem bebidas cadastradas para este restaurante!")
 
             elif opc == 3:
-                print("Pagamento realizado com sucesso!")  # Esse fluxo precisa ser ajustado conforme seu sistema
+                self.escolher_item_cardapio()
                 break
 
             elif opc < 1 or opc > 4:
                 print("Digite uma opção válida!")
 
+    def escolher_item_cardapio(self):
+        conta = []
+        opc = 0
+        while opc != 4:
+            opc = int(input("""
+            Digite o número do que deseja escolher:
+            
+            1 - Prato
+            2 - Bebida
+            3 - Pagar
+            4 - Sair
+            
+            """))
+            if opc == 1:
+                nome_prato = input("Digite o nome do prato que deseja escolher:\n")
+                try:
+                    prato = next(p for p in self._pratos if p.nome.lower() == nome_prato.lower())
+                    conta.append(prato._preco)
+                    print(f"Prato {prato.nome} adicionado à sua conta.")
+                except StopIteration:
+                    print("Prato não encontrado.")
+            elif opc == 2:
+                nome_bebida = input("Digite o nome da bebida que deseja escolher:\n")
+                try:
+                    bebida = next(b for b in self._bebidas if b.nome.lower() == nome_bebida.lower())
+                    conta.append(bebida._preco)
+                    print(f"Bebida {bebida.nome} adicionada à sua conta.")
+                except StopIteration:
+                    print("Bebida não encontrada.")
 
+            elif opc == 3:
+                total_conta = sum(conta)
+                print(f'O total a pagar será de: {total_conta}')
 
-
+            elif opc < 1 or opc > 4:
+                print("Digite uma opção válida")
