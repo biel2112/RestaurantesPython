@@ -132,7 +132,6 @@ def escolher_opc():
 
         else:
             opc_invalida()
-
     except:
         opc_invalida()
 
