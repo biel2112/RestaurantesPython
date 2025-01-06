@@ -6,5 +6,5 @@ class Prato(ItemCardapio):
         self._descricao = descricao
 
     def __str__(self):
-        return f'{self._nome.ljust(25)} | {self._preco.ljust(25)} | {self._descricao}'
+        return f'{self._nome.ljust(25)} | {str(self._preco).ljust(25)} | {self._descricao}'
 

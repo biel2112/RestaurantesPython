@@ -15,4 +15,4 @@ class Bebida(ItemCardapio):
         self._tamanho = tamanho
 
     def __str__(self):
-        return f'{self._nome.ljust(25)} | {self._preco.ljust(25)} | {self._tamanho}'
+        return f'{self._nome.ljust(25)} | {str(self._preco).ljust(25)} | {self._tamanho}'

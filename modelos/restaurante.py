@@ -100,6 +100,9 @@ class Restaurante:
 
                 prato = Prato(nome_prato, preco_prato, descricao_prato)
                 self._pratos.append(prato)
+                print(self._pratos)
+                for prato in self._pratos:
+                    print(prato)
                 print("Prato cadastrado com sucesso!\n")
 
             elif opc == 2:
@@ -109,11 +112,12 @@ class Restaurante:
 
                 bebida = Bebida(nome_bebida, preco_bebida, tamanhos_bebida)
                 self._bebidas.append(bebida)
+                for bebida in self._bebidas:
+                    print(bebida)
                 print("Bebida cadastrada com sucesso!\n")
 
             elif opc < 1 or opc > 3:
                 print("Digite uma opção válida!")
-
 
     def listar_itens_cardapio(self):
         opc = 0
@@ -141,6 +145,13 @@ class Restaurante:
                 else:
                     print("Sem bebidas cadastradas para este restaurante!")
 
+            elif opc == 3:
+                print("Pagamento realizado com sucesso!")  # Esse fluxo precisa ser ajustado conforme seu sistema
+                break
+
             elif opc < 1 or opc > 4:
                 print("Digite uma opção válida!")
+
+
+
 

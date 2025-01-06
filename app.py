@@ -28,14 +28,7 @@ def exibir_subtitulo(texto):
     print()
 
 
-def ver_cardapio():
-    nome_restaurante = input("Digite o nome do restaurante que deseja fazer seu pedido:\n")
-    try:
-        restaurante = next(r for r in rest.restaurantes if r.nome.lower() == nome_restaurante.lower())
-        restaurante.listar_itens_cardapio()
 
-    except StopIteration:
-        print(f"Restaurante '{nome_restaurante}' não encontrado!\n")
 
 
 def exibir_opcs():
@@ -45,7 +38,8 @@ def exibir_opcs():
     print('3. Ativar restaurante')
     print('4. Avaliar restaurante')
     print('5. Cadastrar item ao cardápio do restaurante')
-    print('6. Sair')
+    print('6. Ver cardápio de algum restaurante')
+    print('7. Sair')
 
 def voltar_menu():
     "Retorna para o Menu Principal após pressionar a tecla Enter"
@@ -120,7 +114,14 @@ def escolher_opc():
 
         elif opc == 6:
             exibir_subtitulo("Ver cardápio do restaurante")
-            ver_cardapio()
+            nome_restaurante = input("Digite o nome do restaurante que deseja fazer seu pedido:\n")
+            print(f"Procurando restaurante: {nome_restaurante}")  # Depuração
+            try:
+                restaurante = next(r for r in rest.restaurantes if r.nome.lower() == nome_restaurante.lower())
+                print(f"Restaurante encontrado: {restaurante.nome}")  # Depuração
+                restaurante.listar_itens_cardapio()
+            except StopIteration:
+                print(f"Restaurante '{nome_restaurante}' não encontrado!\n")
             voltar_menu()
 
         elif opc == 7:
