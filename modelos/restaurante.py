@@ -167,8 +167,25 @@ class Restaurante:
                 nome_prato = input("Digite o nome do prato que deseja escolher:\n").strip()
                 prato = next((p for p in self._pratos if p.nome.lower() == nome_prato.lower()), None)
                 if prato:
-                    conta.append(prato.preco)
-                    print(f"Prato '{prato.nome}' adicionado à sua conta.")
+                    opc_desconto = int(input("""Deseja aplicar desconto?
+                                        1 - Sim
+                                        2 - Não
+                                        """))
+                    while opc_desconto == 1 or opc_desconto == 2:
+                        if opc_desconto == 1:
+                            prato.aplicar_desconto()
+                            conta.append(prato.preco)
+                            for valor in conta:
+                                print(valor)
+                            print(f"Prato '{prato.nome}' adicionado à sua conta.")
+                            break
+
+                        elif opc_desconto == 2:
+                            conta.append(prato.preco)
+                            for valor in conta:
+                                print(valor)
+                            print(f"Prato '{prato.nome}' adicionado à sua conta.")
+                            break
                 else:
                     print("Prato não encontrado.")
 
@@ -179,8 +196,21 @@ class Restaurante:
                 nome_bebida = input("Digite o nome da bebida que deseja escolher:\n").strip()
                 bebida = next((b for b in self._bebidas if b.nome.lower() == nome_bebida.lower()), None)
                 if bebida:
-                    conta.append(bebida.preco)
-                    print(f"Bebida '{bebida.nome}' adicionada à sua conta.")
+                    opc_desconto = int(input("""Deseja aplicar desconto?
+                    1 - Sim
+                    2 - Não
+                    """))
+                    while opc_desconto == 1 or opc_desconto == 2:
+                        if opc_desconto == 1:
+                            bebida.aplicar_desconto()
+                            conta.append(bebida.preco)
+                            print(f"Bebida '{bebida.nome}' adicionada à sua conta.")
+                            break
+
+                        elif opc_desconto == 2:
+                            conta.append(bebida.preco)
+                            print(f"Bebida '{bebida.nome}' adicionada à sua conta.")
+                            break
                 else:
                     print("Bebida não encontrada.")
 
