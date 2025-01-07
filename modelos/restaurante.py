@@ -217,6 +217,7 @@ class Restaurante:
             elif opc == 3:
                 total_conta = sum(conta)
                 print(f'O total a pagar será de: {total_conta:.2f}')
+                conta = []
 
             elif opc == 4:
                 conta = []
