@@ -3,7 +3,6 @@ import os
 """Importa a classe restaurante para a variável rest"""
 from modelos.restaurante import Restaurante as rest
 
-
 def exibir_nome_programa():
     """Exibe o nome do programa"""
     print("""
