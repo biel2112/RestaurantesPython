@@ -3,9 +3,12 @@ import requests
 
 app = FastAPI()
 
-@app.get('/api/hello')
-def hello_world():
-    return {'Hello':'Gabriel!!!'}
+'''
+    Apenas um teste para a função app.get()
+'''
+# @app.get('/api/hello')
+# def hello_world():
+#     return {'Hello':'Gabriel!!!'}
 
 @app.get('/api/restaurantes/')
 def get_restaurantes(restaurante: str = Query(None)):
@@ -16,8 +19,6 @@ def get_restaurantes(restaurante: str = Query(None)):
     (Usar o comando [uvicorn main:app --reload], pegar o endereço IP fornecido para o servidor
     e colocar um /docs no final para ver o swaggers)
 
-    :param restaurante:
-    :return:
     '''
 
     url = 'https://guilhermeonrails.github.io/api-restaurantes/restaurantes.json'

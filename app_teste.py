@@ -41,6 +41,9 @@ def exibir_opcs():
     print('7. Sair')
 
 def buscar_restaurante(restaurante):
+    '''
+    Pesquisa pelo restaurante com o nome fornecido na lista de restaurantes
+    '''
     try:
         return next(r for r in rest.restaurantes if r.nome.lower() == restaurante.lower())
     except StopIteration:

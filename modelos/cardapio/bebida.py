@@ -15,7 +15,14 @@ class Bebida(ItemCardapio):
         self._tamanho = tamanho
 
     def __str__(self):
+
+        '''Retorna uma representação em string de uma instância da classe de Bebida'''
+
         return f'{self._nome.ljust(25)} | {str(self._preco).ljust(25)} | {self._tamanho}'
 
     def aplicar_desconto(self):
+        '''
+        Aplica um desconto no preço da instância da classe Bebida recebida
+        no parâmetro desta função
+        '''
         self._preco -= (self.preco * 0.1)

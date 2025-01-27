@@ -84,6 +84,11 @@ class Restaurante:
         return self._nome
 
     def adicionar_item_cardapio(self):
+        '''
+        Oferece a opção para o usuário (admnistrador) de adicionar itens ao cardápio do restaurante,
+        sendo Pratos ou Bebidas
+
+        '''
         opc = 0
         while opc != 3:
             opc = int(input("""
@@ -115,6 +120,11 @@ class Restaurante:
                 print("Digite uma opção válida!")
 
     def listar_itens_cardapio(self):
+        '''
+        Oferece a opção para o usuário ver a lista de opções que o cardápio (com Pratos e Bebidas
+        cadastrados) apresenta.
+
+        '''
         opc = 0
         while opc != 4:
             opc = int(input("""
@@ -148,6 +158,12 @@ class Restaurante:
                 print("Digite uma opção válida!")
 
     def escolher_item_cardapio(self):
+        '''
+        Adiciona itens na lista de pedidos do usuário, pergunta se quer um desconto (Apenas para testar
+        o método abstrato de oferecer desconto) e no final mostra o valor a ser pago pelo pedido do
+        usuário.
+
+        '''
         conta = []
         opc = 0
         while opc != 4:
